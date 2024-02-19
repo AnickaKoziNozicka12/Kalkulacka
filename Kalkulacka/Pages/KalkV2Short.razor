@@ -15,16 +15,30 @@
 <div>
     <label>Výsledek:<input @bind="vysledek" readonly /></label>
 </div>
+<div>
+    <label><input type="checkbox" @bind-value="kontrola_preteceni"/>Kontrola přetečení</label>
+</div>
 @code {
-    
-        short cislo1;
-        short cislo2;
-        short vysledek;
 
-        private void Soucet()
+    short cislo1;
+    short cislo2;
+    short vysledek;
+    bool kontrola_preteceni = false;
+
+    private void Soucet()
+    {
+        if (kontrola_preteceni)
         {
-        vysledek = (short)(cislo1 + cislo2);
+            checked
+            {
+                vysledek = (short)(cislo1 + cislo2);
+            }
         }
+        else
+        {
+            vysledek = (short)(cislo1 + cislo2);
+        }
+    }
         private void Rozdil()
         {
             vysledek = (short)(cislo1 - cislo2);
